@@ -46,5 +46,4 @@ var Rows = React.createClass({
 
 
 
-
-React.render(<Box initialValue ={'X'}/>, document.body);
+React.render(<Rows/>, document.body);
