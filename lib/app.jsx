@@ -7,8 +7,20 @@ var boxStyle = {
     width: 100
 };
 
+var timerValue=300;
+
+
 var Box = React.createClass({
-    componentWillMount: function(){
+
+'componentWillMount':function onComponentWillMount(){
+        var self=this;
+        this.timer=setInterval(function onTimer(){
+            self.setState({
+            'value': self.state.value==='X' ? 'O' : 'X'
+        });
+        },timerValue );
+    },
+    /*componentWillMount: function(){
         var old_this = this;
         this.timer = setInterval(function(){
         var oldValue = old_this.state.value;
@@ -16,8 +28,8 @@ var Box = React.createClass({
         old_this.setState({
         value: newValue
         });
-        }, 300);
-    },
+        }, timerValue);
+    },*/
     componentWillUnmount: function(){
         clearInterval(this.timer);
     },
@@ -34,4 +46,3 @@ var Box = React.createClass({
 });
 
 React.render(<Box initialValue ={'X'}/>, document.body);
-React.render(<Box initialValue2 ={'O'}/>, document.body);
