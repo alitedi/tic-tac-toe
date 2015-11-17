@@ -8,17 +8,17 @@ var boxStyle = {
 };
 
 var Box = React.createClass({
-  /**
-   * Render a HTML button
-   * @return {ReactElement}
-   */
-  'render': function onRender () {
+
+    getInitialState: function() {
+        return {value: this.props.initialValue};
+    },
+    'render': function onRender () {
     return (
         <div>
-            <button style={boxStyle}>{this.props.value}</button>
+            <button style={boxStyle}>{this.state.value}</button>
         </div>
     );
-  }
+   }
 });
 
-React.render(<Box value ='X'/>, document.body);
+React.render(<Box initialValue ='X'/>, document.body);
