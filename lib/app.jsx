@@ -8,7 +8,19 @@ var boxStyle = {
 };
 
 var Box = React.createClass({
-
+    componentWillMount: function(){
+        var old_this = this;
+        this.timer = setInterval(function(){
+        var oldValue = old_this.state.value;
+        var newValue = oldValue === 'X' ? 'O': 'X';
+        old_this.setState({
+        value: newValue
+        });
+        }, 300);
+    },
+    componentWillUnmount: function(){
+        clearInterval(this.timer);
+    },
     getInitialState: function() {
         return {value: this.props.initialValue};
     },
@@ -21,4 +33,5 @@ var Box = React.createClass({
    }
 });
 
-React.render(<Box initialValue ='X'/>, document.body);
+React.render(<Box initialValue ={'X'}/>, document.body);
+React.render(<Box initialValue2 ={'O'}/>, document.body);
